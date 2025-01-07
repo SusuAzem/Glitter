@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@await Html.PartialAsync("_SideMenu")
+
+<section>
+    @await Html.PartialAsync("_Slogan")
+</section>
+
+<section id="Vision">
+    @await Html.PartialAsync("_Vision")
+</section>
+
+<section id="Beliefs">
+    @await Html.PartialAsync("_Belief")
+</section>
+
+<section id="Goals">
+    @await Html.PartialAsync("_Goal")
+</section>
+
+ <section id="Message">
+    @await Html.PartialAsync("_Message")
+</section>
+
+@*<section id="Services">
+    @await Html.PartialAsync("_Service")
+</section> *@
+
+<section id="Clients">
+    @await Html.PartialAsync("_Client")
+</section>
+
+

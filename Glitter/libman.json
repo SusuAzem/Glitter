@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "animate.css@4.1.1",
+      "destination": "wwwroot/lib/animate.css/",
+      "files": [
+        "animate.min.css",
+        "animate.css"
+      ]
+    },
+    {
+      "library": "counterup2@2.0.2",
+      "destination": "wwwroot/lib/counterup2/",
+      "files": [
+        "index.min.js"
+      ]
+    },
+    {
+      "library": "jquery-easing@1.4.1",
+      "destination": "wwwroot/lib/jquery-easing/",
+      "files": [
+        "jquery.easing.min.js",
+        "jquery.easing.js"
+      ]
+    },
+    {
+      "library": "waypoints@4.0.1",
+      "destination": "wwwroot/lib/waypoints/",
+      "files": [
+        "jquery.waypoints.min.js"
+      ]
+    },
+    {
+      "library": "wow@1.1.2",
+      "destination": "wwwroot/lib/wow/",
+      "files": [
+        "wow.min.js"
+      ]
+    },
+    {
+      "library": "splidejs@4.1.4",
+      "destination": "wwwroot/lib/splidejs/",
+      "files": [
+        "js/splide.min.js",
+        "css/splide.min.css"
+      ]
+    },
+    {
+      "library": "animejs@3.2.2",
+      "destination": "wwwroot/lib/animejs/"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<div id="message" class="container py-3 wow fadeInUp" data-wow-delay="2s" data-wow-duration="2s">
+    <div class="py-1 px-1 mx-auto w-100">
+        <div class="animated-mail mx-auto">
+            <div class="back-fold"></div>
+            <div class="letter">
+                <div class="letter-border"></div>
+                <div class="letter-title">
+                    @Configuration["Message:Title"]
+                </div>
+                <div class="letter-context mx-auto">
+                    @Configuration["Message:Text"]
+                </div>
+                <div class="letter-stamp">
+                    @Configuration["Message:Stamp"]                    
+                </div>
+            </div>
+            <div class="top-fold"></div>
+            <div class="body"></div>
+            <div class="left-fold"></div>
+                <img class="m-auto" src="~/img/stamp.png" />
+        </div>
+    </div>
+</div>

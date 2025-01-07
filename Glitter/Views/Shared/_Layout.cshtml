@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Glitter" name="keywords">
+    <meta content="Marketing Agency" name="description">
+    <title>@ViewData["Title"] - Glitter</title>
+    @await Html.PartialAsync("_css")
+</head>
+<body>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner">
+        </div>
+    </div>
+    <header>
+        @await Html.PartialAsync("_Navbar")
+    </header>
+
+    <main role="main" class="container pb-0 d-block">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top">
+        @await Html.PartialAsync("_Footer")
+    </footer>
+
+    @* <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top">
+    <i class="bi bi-arrow-up"></i>
+    </a> *@
+
+    @await Html.PartialAsync("_js")
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("Notyf")
+</body>
+</html>
+﻿
+
+
+

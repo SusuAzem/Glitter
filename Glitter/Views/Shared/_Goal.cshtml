@@ -1,0 +1,43 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<div id="goal" class="container py-3 wow fadeInUp" data-wow-delay="2s" data-wow-duration="2s">
+    <div class="row py-1 px-1 mx-auto g-1 w-100 justify-content-center">
+        <div class="col-4">
+            <div class="card-slider">
+                <img src="~/img/goal.png" alt="goals">
+                <div class="card-content">
+                    <h3>
+                        @Configuration["Goals:Title"]
+                    </h3>
+                    <p class="IndJus">
+                        @Configuration["Goals:Text"]
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class='wrapper'>
+                <div class='carousel'>
+
+                    @{
+                        var list = Configuration.GetSection("Goals:Items").Get<List<Item>>();
+                        foreach (var item in list!)
+                        {
+                            <div class='carousel__item'>
+                                <div class='carousel__item-head'>
+                                    <img src="~/img/goalsIcon.png" />
+                                </div>
+                                <div class='carousel__item-body'>
+                                    <p class='title'>@item.Title</p>
+                                    <p>@item.Text</p>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
