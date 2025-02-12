@@ -21,9 +21,10 @@
         @RenderBody()
     </main>
 
-    <footer class="border-top">
+     <footer class="footer">
         @await Html.PartialAsync("_Footer")
     </footer>
+    @await Html.PartialAsync("_Modal")
 
     @* <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top">
     <i class="bi bi-arrow-up"></i>

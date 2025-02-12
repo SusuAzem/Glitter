@@ -1,7 +1,8 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
-<div id="Vision" class="container py-2 wow fadeInUp" data-wow-delay="2s" data-wow-duration="2s">
+<span class="anchor" id="visionAn"></span>
+<div id="vision" class="container center py-4 wow fadeInUp" data-wow-delay="2s" data-wow-duration="2s">
     <div class="py-1 w-100 px-1 mx-auto">
         <div class="card mx-auto">
             <div class="flip-card">
@@ -16,15 +17,15 @@
                     </div>
                     <div class="card-back">
                         <img src="..\img\vision back.png" />
+                        <h3 class="inside-page-heading">
+                            @Configuration["Vision:Title2"]
+                        </h3>
                     </div>
                 </div>
             </div>
             <div class="inside-page">
-                <div class="inside-page-container">
-                    <h3 class="inside-page-heading">
-                        @Configuration["Vision:Title2"]
-                    </h3>
-                    <p class="inside-page-text IndJus">
+                <div class="inside-page-container">                    
+                    <p class="inside-page-text IndJus .mb-0">
                         @Configuration["Vision:Text"]
                     </p>
                 </div>

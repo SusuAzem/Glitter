@@ -1,7 +1,7 @@
 ﻿(function ($) {
     "use strict";
 
-     //Spinner
+    //Spinner
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
@@ -10,82 +10,11 @@
         }, 1);
     };
     spinner();
-
-
     // Initiate the wowjs
     new WOW().init();
 
-
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 45) {
-            $('.navbar').addClass('sticky-top');
-        } else {
-            $('.navbar').removeClass('sticky-top');
-        }
-    });
-
-    // Dropdown on mouse hover
-    //const $dropdown = $(".dropdown");
-    //const $dropdownToggle = $(".dropdown-toggle");
-    //const $dropdownMenu = $(".dropdown-menu");
-    //const showClass = "show";
-
-    //$(window).on("load resize", function () {
-    //    if (this.matchMedia("(min-width: 992px)").matches) {
-    //        $dropdown.hover(
-    //            function () {
-    //                const $this = $(this);
-    //                $this.addClass(showClass);
-    //                $this.find($dropdownToggle).attr("aria-expanded", "true");
-    //                $this.find($dropdownMenu).addClass(showClass);
-    //            },
-    //            function () {
-    //                const $this = $(this);
-    //                $this.removeClass(showClass);
-    //                $this.find($dropdownToggle).attr("aria-expanded", "false");
-    //                $this.find($dropdownMenu).removeClass(showClass);
-    //            }
-    //        );
-    //    } else {
-    //        $dropdown.off("mouseenter mouseleave");
-    //    }
-    //});
-
-
 })(jQuery);
 
-//const sections = document.querySelectorAll('section');
-//const config = {
-//    rootMargin: '0px 0px -55%'
-/*};*/
-//rootMargin: '-50px 0px -55%'
-
-//let observer = new IntersectionObserver(function (entries, self) {
-//    entries.forEach(entry => {
-//        console.log(entry);
-//        if (entry.isIntersecting) {
-//            intersectionHandler(entry);
-//        }
-//    });
-//}, config);
-
-//sections.forEach(section => {
-//    observer.observe(section);
-//});
-
-//function intersectionHandler(entry) {
-//    const id = entry.target.id;
-//    const currentlyActive = document.querySelector('.navbar-nav a.active');
-//    const shouldBeActive = document.querySelector('.navbar-nav a[href="#' + id + '"]');
-
-//    if (currentlyActive) {
-//        currentlyActive.classList.remove('active');
-//    }
-//    if (shouldBeActive) {
-//        shouldBeActive.classList.add('active');
-//    }
-//}
 
 const arry = [
     "Every Detail Dazzles",
@@ -107,12 +36,8 @@ async function main() {
         for (let t of arry) {
             await new Promise(resolve => {
                 setTimeout(() => {
-                    console.log(t);
                     resolve(fadeText(t))
                 }, 3000);
-                setTimeout(() => {
-                    resolve(ballrotation());
-                }, 11000);
             })
         }
     } while (true);
@@ -121,8 +46,7 @@ main().then();
 
 function fadeText(t) {
     textWrapper.textContent = "";
-    textWrapper.html("<span class='letter'>"+t+"</span>");
-    console.log(t);
+    textWrapper.html("<span class='letter'>" + t + "</span>");
     anime.timeline({ loop: true })
         .add({
             targets: '.slogans .letter',
@@ -150,34 +74,59 @@ $("address").each(function () {
 });
 
 // Wrap every letter in a span
-var textWrapperClient = document.querySelector('.ml11 .letters');
-textWrapperClient.innerHTML = textWrapperClient.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+//var textWrapperClient = document.querySelector('.ml11 .letters');
+//textWrapperClient.innerHTML = textWrapperClient.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
-anime.timeline({ loop: true })
-    .add({
-        targets: '.ml11 .line',
-        scaleY: [0, 1],
-        opacity: [0.5, 1],
-        easing: "easeOutExpo",
-        duration: 700
-    })
-    .add({
-        targets: '.ml11 .line',
-        translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
-        easing: "easeOutExpo",
-        duration: 700,
-        delay: 100
-    }).add({
-        targets: '.ml11 .letter',
-        opacity: [0, 1],
-        easing: "easeOutExpo",
-        duration: 600,
-        offset: '-=775',
-        delay: (el, i) => 34 * (i + 1)
-    }).add({
-        targets: '.ml11',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
+//anime.timeline({ loop: true })
+//    .add({
+//        targets: '.ml11 .line',
+//        scaleY: [0, 1],
+//        opacity: [0.5, 1],
+//        easing: "easeOutExpo",
+//        duration: 700
+//    })
+//    .add({
+//        targets: '.ml11 .line',
+//        translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+//        easing: "easeOutExpo",
+//        duration: 700,
+//        delay: 100
+//    }).add({
+//        targets: '.ml11 .letter',
+//        opacity: [0, 1],
+//        easing: "easeOutExpo",
+//        duration: 600,
+//        offset: '-=775',
+//        delay: (el, i) => 34 * (i + 1)
+//    }).add({
+//        targets: '.ml11',
+//        opacity: 0,
+//        duration: 1000,
+//        easing: "easeOutExpo",
+//        delay: 1000
+//    });
+
+const mes = document.querySelector("h6.mes");
+const info = document.querySelectorAll(".info");
+info.forEach(el => {
+    el.onclick = function () {
+        document.execCommand("copy");
+    }
+    el.addEventListener("copy", function (event) {
+        event.preventDefault();
+        if (event.clipboardData) {
+            mes.classList.add("show");
+            event.clipboardData.setData("text/plain", el.textContent);
+            console.log(event.clipboardData.getData("text") + mes.getAttribute("opacity"));
+            setTimeout(() => {
+                mes.classList.remove("show");
+            }, 2000);
+        }
     });
+});
+
+$('#ContactModal').on('shown.bs.modal', function () {
+    $('input[name="Name"]').focus();
+});
+
+

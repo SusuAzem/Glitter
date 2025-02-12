@@ -121,5 +121,35 @@
     "Title": "Our Vision",
     "Title2": "We Seek To Be ..",
     "Text": "The leading creative force that transforms ideas into unforgettable experiences, inspiring connection and engagement through every dazzling detail."
-  }
+  },
+  "Interests": [
+    {
+      "Id":"1",
+      "Text": "Social Media Marketing Strategy"
+    },
+    {
+      "Id":"2",
+      "Text": "Video and Photo Production"
+    },
+    {
+      "Id":"3",
+      "Text": "Social Media Management"
+    },
+    {
+      "Id":"4",
+      "Text": "Social Media Advertising"
+    },
+    {
+      "Id": "5",
+      "Text": "Influencer Marketing"
+    },
+    {
+      "Id": "6",
+      "Text": "Community Management"
+    },
+    {
+      "Id":"7",
+      "Text": "Analytics and Reporting"
+    },
+  ]
 }

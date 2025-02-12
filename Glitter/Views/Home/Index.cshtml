@@ -4,32 +4,32 @@
 
 @await Html.PartialAsync("_SideMenu")
 
-<section>
+<section class="center">
     @await Html.PartialAsync("_Slogan")
 </section>
 
-<section id="Vision">
+<section id="Vision" class="center">
     @await Html.PartialAsync("_Vision")
 </section>
 
-<section id="Beliefs">
+<section id="Beliefs" class="center">
     @await Html.PartialAsync("_Belief")
 </section>
 
-<section id="Goals">
+<section id="Goals" class="center">
     @await Html.PartialAsync("_Goal")
 </section>
 
- <section id="Message">
+<section id="Message" class="center">
     @await Html.PartialAsync("_Message")
 </section>
 
-@*<section id="Services">
-    @await Html.PartialAsync("_Service")
-</section> *@
+<section id="Services">
+@*      @await Html.PartialAsync("_Service")  *@
+</section>
 
-<section id="Clients">
-    @await Html.PartialAsync("_Client")
+<section id="Clients" class="center">
+   @await Html.PartialAsync("_Client") 
 </section>
 
 

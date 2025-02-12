@@ -1,0 +1,126 @@
+﻿@model Glitter.Models.MessageViewModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+<div class="modal" id="PrivacyModal" tabindex="-1" role="document" aria-labelledby="PrivacyModal" aria-hidden="true">
+    <div class="modal-dialog" style="background: rgba(9, 30, 62, .7);">
+        <div class="modal-content">
+            <div class="modal-header border-1">
+                <h5 class="modal-title" id="ModalTitle">Privacy Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex align-items-center justify-content-center">
+                <p>
+                    Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at our Email Address.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="ContactModal" tabindex="-1" role="dialog" aria-labelledby="ContactModal" aria-hidden="true">
+    <div class="modal-dialog" style="background: rgba(9, 30, 62, .7);">
+        <div class="modal-content">
+            <form id="ContactUs" method="post" asp-action="SendEmail" 
+            onsubmit="return validateForm()">
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="TimeSend" type="hidden" />
+                <div class="modal-header border-1">
+                    <h5 class="modal-title" id="ModalTitle">Contact Us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 col-10 mx-auto ps-2">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="bg-primary ic-con">
+                                <i class="fas fa-phone-alt text-white"></i>
+                            </div>
+                            <div class="ps-1">
+                                <h6 class="info tel text-primary my-auto">0500559655</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="bg-primary ic-con">
+                                <i class="fas fa-envelope-open text-white"></i>
+                            </div>
+                            <div class="ps-1">
+                                <h6 class="info email text-primary my-auto">REEM@THEGLITTER.NET</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="bg-primary ic-con">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div class="ps-1">
+                                <address class="text-primary text-decoration-underline my-auto">
+                                    Riyadh, AlOlaya
+                                </address>
+                            </div>
+                        </div>
+                        <div class="ps-1">
+                            <h6 class="mes">Text is copied</h6>
+                        </div>
+                    </div>
+                    <div class="row g-5">
+                        <div class="col-10 mx-auto">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <input type="text" class="form-control border-1 bg-light px-3" placeholder="Your Name" asp-for="Name" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="email" class="form-control border-1 bg-light px-3" placeholder="Your Email" asp-for="Email" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="tel" class="form-control border-1 bg-light px-3" placeholder="Your Phone" asp-for="PhoneNumber" required
+                                           pattern="^(05)(5|0|3|6|4|9|1|8|7)([0-9]{7})$" size="10"
+                                           title="05........">
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="text" class="form-control border-1 bg-light px-3" placeholder="Company" asp-for="Company" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <p>Interested in:</p>
+                                    @{
+                                        List<Interest>? list = Configuration.GetSection("Interests").Get<List<Interest>>();
+                                        // List<SelectListItem> selectLists = list!.Select(i =>
+                                        // new SelectListItem(text: i.Text, value: i.Id)).ToList();
+                                        foreach (var item in list!)
+                                        {
+                                            <div class="col-12 form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="@item.Id" value="@item.Id" name="Interests">
+                                                <label class="form-check-label" for="cb_@item.Id">
+                                                    @item.Text
+                                                </label>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control border-1 bg-light px-3" placeholder="Subject" asp-for="Subject" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea class="form-control border-1 bg-light px-3 py-3" rows="4" placeholder="Message.." asp-for="Content" required></textarea>
+                                </div>
+
+                                @Html.AntiForgeryToken()
+                                <div class="col-12">
+                                    <button class="btn w-100 py-1" type="submit">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
